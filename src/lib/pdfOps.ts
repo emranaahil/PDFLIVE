@@ -2,7 +2,6 @@ import { PDFDocument, degrees, rgb, type PDFFont } from "pdf-lib";
 import fontkit from "@pdf-lib/fontkit";
 import { embedStandardFont, type FontId } from "./fonts";
 import { getPdfDocument, renderPageToCanvas } from "./pdfjs";
-import { JPEG_COMPRESS_QUALITY } from "./constants";
 import { clearCanvas } from "./memory";
 
 export async function loadPdf(bytes: Uint8Array): Promise<PDFDocument> {

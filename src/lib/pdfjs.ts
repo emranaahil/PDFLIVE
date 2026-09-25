@@ -76,7 +76,7 @@ export async function renderPageToCanvas(
   const logicalH = viewport.height / ratio;
   canvas.style.width = `${logicalW}px`;
   canvas.style.height = `${logicalH}px`;
-  await page.render({ canvasContext: ctx, viewport, canvas }).promise;
+  await page.render({ canvasContext: ctx, viewport }).promise;
   return { width: logicalW, height: logicalH };
 }
 

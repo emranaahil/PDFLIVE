@@ -1,7 +1,6 @@
 import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { FileDrop } from "../components/FileDrop";
 import { PdfCanvas } from "../components/PdfCanvas";
 import { TextOverlay, type OverlayBox } from "../components/TextOverlay";
 import { SignaturePad } from "../components/SignaturePad";

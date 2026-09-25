@@ -8,9 +8,10 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+   base: '/PDFLIVE/',
   resolve: {
     alias: {
-      "@": "/src",
+      "@": path.resolve(root, "src"),
       "@qpdf-engine": path.join(root, "node_modules/@jspawn/qpdf-wasm/qpdf.js"),
     },
   },

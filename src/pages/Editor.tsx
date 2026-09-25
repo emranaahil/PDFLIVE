@@ -24,7 +24,7 @@ export function Editor() {
     const id = crypto.randomUUID();
     setBoxes((b) => [
       ...b,
-      { id, x: 24, y: 24, width: 220, html: "<p></p>", fontSize: 16 },
+      { id, kind: "text", pageIndex: page - 1, x: 24, y: 24, width: 220, height: 100, html: "<p></p>", fontSize: 16, fontFamily: "helvetica" },
     ]);
     setActiveId(id);
   };
@@ -35,12 +35,15 @@ export function Editor() {
       const next = await bakeTextOverlays(
         bytes,
         boxes.map((b) => ({
-          pageIndex: page - 1,
+          kind: b.kind,
+          pageIndex: b.pageIndex,
           x: b.x,
           y: b.y,
           width: b.width,
+          height: b.height,
           html: b.html,
           fontSize: b.fontSize,
+          fontFamily: b.fontFamily,
           pageWidth: size.width || 1,
           pageHeight: size.height || 1,
         }))
@@ -124,6 +127,7 @@ export function Editor() {
               setBoxes((all) => all.map((x) => (x.id === b.id ? { ...x, ...patch } : x)))
             }
             onDone={() => setActiveId(null)}
+            onRemove={() => setBoxes((all) => all.filter((x) => x.id !== b.id))}
           />
         ))}
         {stamps.map((s) => (
